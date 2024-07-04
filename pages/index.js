@@ -164,7 +164,7 @@ export default function HomePage() {
 
   return (
     <main className="container">
-      <header><h1>View Your Transaction, Deposit, Withdraw ATM!</h1></header>
+      <header><h1>Welcome to Ethirium ATM!</h1></header>
       {ethWallet && account ? (
         <div>
           <p>Your Account: {account}</p>
