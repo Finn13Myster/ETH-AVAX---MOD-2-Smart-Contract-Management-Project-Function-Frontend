@@ -1,5 +1,5 @@
-#Getting Started
-Installing
+# Getting Started
+## Installing
 To run this program, follow these steps:
 
 Clone this public repository.
@@ -32,7 +32,7 @@ Copy code
 npm run dev
 After completing these steps, the project will be running locally at http://localhost:3000/.
 
-Setting up MetaMask
+## Setting up MetaMask
 To interact with the local Hardhat node, set up MetaMask as follows:
 
 Open MetaMask in your browser extension.
@@ -62,7 +62,7 @@ Paste the copied private key into the field.
 
 Click "Import."
 
-Executing the Program
+## Executing the Program
 Once MetaMask is set up and connected:
 
 Refresh the website to see text views such as the header, your account address, and your balance in the system.
@@ -71,7 +71,7 @@ Use MetaMask to confirm transactions when using the deposit or withdraw buttons.
 
 Real-time transaction history will update automatically after each successful transaction, showing details such as timestamp, action performed, and amount.
 
-Help: Fix Nonce Error
+## Help: Fix Nonce Error
 If you encounter nonce errors in Solidity with MetaMask:
 
 Open your MetaMask extension.
@@ -82,6 +82,6 @@ Go to Settings and then Advanced.
 
 Scroll down to find and click on "Clear Activity Tab Data."
 
-Author
+## Author
 
 Franz Leeann U. Ferry
