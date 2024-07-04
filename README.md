@@ -1,3 +1,6 @@
+# Project Description
+The course establishes a strong smart contract management system appropriate for ATMs and capable of improving security, automation of functions, and regulation. By leveraging blockchain technology for authenticated transactions, that same technology ensures safety in processing, but in this case, it literally automates execution to reduce errors and increase speed. It embeds such regulatory standards as KYC and AML into smart contracts in streamlining the whole process of compliance while simultaneously increasing operational efficiency. Another further development in the future could be self-executing contracts, translating independently the regulatory standards to improve once more the security and integrity of transactions in ATM operations.
+
 # Getting Started
 ## Installing
 To run this program, follow these steps:
