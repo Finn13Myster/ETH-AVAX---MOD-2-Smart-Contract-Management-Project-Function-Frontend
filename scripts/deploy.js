@@ -5,19 +5,30 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 const hre = require("hardhat");
+const { ethers } = hre;
 
 async function main() {
-  const initBalance = 1;
+  const initBalance = ethers.utils.parseEther("1.0"); // Initial balance in ether
+  const interestRate = 1000; // Example interest rate: 100%
+  const interestInterval = 1; // Example interval: 10 seconds
+
+  // Get the ContractFactory and deploy the Assessment contract
   const Assessment = await hre.ethers.getContractFactory("Assessment");
-  const assessment = await Assessment.deploy(initBalance);
+  const assessment = await Assessment.deploy(initBalance, interestRate, interestInterval);
+
   await assessment.deployed();
 
-  console.log(`A contract with balance of ${initBalance} eth deployed to ${assessment.address}`);
+  console.log(`Assessment contract deployed to: ${assessment.address}`);
+  console.log(`Initial balance: ${ethers.utils.formatEther(initBalance)} ETH`);
+  console.log(`Interest rate set to: ${interestRate}%`);
+  console.log(`Interest interval set to: ${interestInterval} seconds`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
