@@ -1,90 +1,92 @@
-# Project Description
-The course establishes a strong smart contract management system appropriate for ATMs and capable of improving security, automation of functions, and regulation. By leveraging blockchain technology for authenticated transactions, that same technology ensures safety in processing, but in this case, it literally automates execution to reduce errors and increase speed. It embeds such regulatory standards as KYC and AML into smart contracts in streamlining the whole process of compliance while simultaneously increasing operational efficiency. Another further development in the future could be self-executing contracts, translating independently the regulatory standards to improve once more the security and integrity of transactions in ATM operations.
+# Smart Contract Management Project
+The program is built to implement a high degree of automation, together with security and regulatory compliance, through an ATM-based robust smart contract management subsystem. Utilizing blockchain technology, the system ensures that only permitted transactions are processed, maintaining all security aspects. Simultaneously, it automates transaction execution to avoid errors and speed impacts. It integrates both KYC and AML regulations directly into the smart contracts, helping to automate compliance with standards at all transaction levels. The system also includes smart, self-executing contracts that automatically ensure regulatory compliance, thereby improving transaction security via ATMs.
 
-# Getting Started
-## Installing
-To run this program, follow these steps:
+## Description
+This project aims to provide a comprehensive solution for managing smart contracts with a focus on automation, security, and regulatory compliance. By leveraging blockchain technology, the system ensures that transactions are processed securely and efficiently. It integrates Know Your Customer (KYC) and Anti-Money Laundering (AML) regulations into the smart contracts, automating compliance processes. The project also features self-executing contracts that enhance security and compliance in ATM transactions. This solution is ideal for financial institutions seeking to streamline their operations while adhering to regulatory requirements.
 
-Clone this public repository.
+## Getting Started
 
-bash
-Copy code
-git clone [<repository-url>](https://github.com/MetacrafterChris/SCM-Starter.git)
-cd <repository-directory>
-Inside the project directory, install dependencies:
+### Installing and Executing the Program
 
-bash
-Copy code
-npm install
-Open two additional terminals in your Visual Studio Code (VS Code).
+1. **Clone this Public Repository:**
+    ```bash
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
 
-In the second terminal, start a local Ethereum node using Hardhat:
+2. **Install Dependencies:**
+    ```bash
+    npm install
+    ```
 
-bash
-Copy code
-npx hardhat node
-In the third terminal, deploy smart contracts to the local network (Hardhat node):
+3. **Open Two Additional Terminals in Visual Studio Code (VS Code):**
 
-bash
-Copy code
-npx hardhat run --network localhost scripts/deploy.js
-Back in the first terminal, launch the Next.js frontend:
+4. **Start a Local Ethereum Node Using Hardhat in the Second Terminal:**
+    ```bash
+    npx hardhat node
+    ```
 
-bash
-Copy code
-npm run dev
-After completing these steps, the project will be running locally at http://localhost:3000/.
+5. **Deploy Smart Contracts to the Local Network (Hardhat Node) in the Third Terminal:**
+    ```bash
+    npx hardhat run --network localhost scripts/deploy.js
+    ```
 
-## Setting up MetaMask
+6. **Launch the Next.js Frontend in the First Terminal:**
+    ```bash
+    npm run dev
+    ```
+
+After completing these steps, the project will be running locally at [http://localhost:3000/](http://localhost:3000/).
+
+### Setting Up MetaMask
 To interact with the local Hardhat node, set up MetaMask as follows:
 
-Open MetaMask in your browser extension.
+1. **Open MetaMask in Your Browser Extension.**
 
-Navigate to the three dots in the top-right corner of the extension.
+2. **Navigate to the Three Dots in the Top-Right Corner of the Extension.**
 
-Go to Settings and then Networks.
+3. **Go to Settings and then Networks.**
 
-Click on "Add Network" to manually add a network.
+4. **Click on "Add Network" to Manually Add a Network.**
 
-Enter the following details:
+5. **Enter the Following Details:**
+    - **Network Name:** Any name
+    - **New RPC URL:** [http://127.0.0.1:8545/](http://127.0.0.1:8545/)
+    - **Chain ID:** 31337
+    - **Currency Symbol:** ETH
 
-Network Name: Any name
-New RPC URL: http://127.0.0.1:8545/
-Chain ID: 31337
-Currency Symbol: ETH
-Import Account #0 (Owner)
-To import the account used by Hardhat:
+6. **Import Account #0 (Owner):**
+    - From the terminal where you have the list of all Hardhat addresses, copy the private key of Account #0.
+    - In MetaMask, navigate to the Account tab.
+    - Click on "Import Account."
+    - Paste the copied private key into the field.
+    - Click "Import."
 
-From the terminal where you have the list of all Hardhat addresses, copy the private key of Account #0.
-
-In MetaMask, navigate to the Account tab.
-
-Click on "Import Account."
-
-Paste the copied private key into the field.
-
-Click "Import."
-
-## Executing the Program
+### Executing the Program
 Once MetaMask is set up and connected:
 
-Refresh the website to see text views such as the header, your account address, and your balance in the system.
+1. **Refresh the Website:** 
+    - You should see text views such as the header, your account address, and your balance in the system.
 
-Use MetaMask to confirm transactions when using the deposit or withdraw buttons.
+2. **Use MetaMask to Confirm Transactions:** 
+    - Use the deposit or withdraw buttons.
 
-Real-time transaction history will update automatically after each successful transaction, showing details such as timestamp, action performed, and amount.
+3. **Real-Time Transaction History:** 
+    - Transaction history will update automatically after each successful transaction, showing details such as timestamp, action performed, and amount.
 
-## Help: Fix Nonce Error
+### Help: Fix Nonce Error
 If you encounter nonce errors in Solidity with MetaMask:
 
-Open your MetaMask extension.
+1. **Open Your MetaMask Extension.**
 
-Navigate to the three dots in the top-right corner.
+2. **Navigate to the Three Dots in the Top-Right Corner.**
 
-Go to Settings and then Advanced.
+3. **Go to Settings and then Advanced.**
 
-Scroll down to find and click on "Clear Activity Tab Data."
+4. **Scroll Down to Find and Click on "Clear Activity Tab Data."**
 
 ## Author
-
-Franz Leeann U. Ferry
+- Franz Leeann U. Ferry [@LinkedIn](www.linkedin.com/in/franz-leeann-ferry-a286552a2)
+  
+## License
+This project is licensed under the MIT License - see the `LICENSE.md` file for details
