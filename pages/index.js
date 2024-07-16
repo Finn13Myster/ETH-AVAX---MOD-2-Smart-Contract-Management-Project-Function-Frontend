@@ -108,14 +108,14 @@ export default function HomePage() {
 
     const transferETH = async () => {
         if (!atm || !recipient || !transferAmount) return;
-
+    
         try {
             const tx = await atm.transferETH(recipient, transferAmount);
             await tx.wait();
             console.log(`Donated ${transferAmount} blood to ${recipient}`);
             getBalance();
             fetchTransactionHistory();
-            updateTransactionHistory(`Donated ${transferAmount} blood to ${recipient}`);
+            updateTransactionHistory(`Donated ${transferAmount} blood to ${recipient}`, transferAmount);
             setRecipient("");
             setTransferAmount("");
         } catch (error) {
@@ -123,12 +123,12 @@ export default function HomePage() {
         }
     };
 
-    const updateTransactionHistory = (action) => {
+    const updateTransactionHistory = (action, amount) => {
         setTransactionHistory([
             ...transactionHistory,
             {
                 action: action,
-                amount: transferAmount,
+                amount: amount,
                 timestamp: new Date().toLocaleDateString()
             }
         ]);
@@ -136,25 +136,32 @@ export default function HomePage() {
 
     const fetchTransactionHistory = async () => {
         if (!atm) return;
-
+    
         try {
             setLoadingTransactionHistory(true);
-
+    
             const length = await atm.getTransactionHistoryLength();
             const transactions = [];
             for (let i = 0; i < length; i++) {
                 const txn = await atm.getTransaction(i);
-                const action = txn[1] === account ? "Extraction" : "Transfusion";
+                let action = "";
+                if (txn[1] === account) {
+                    action = "Extraction";
+                } else if (txn[2] === account) {
+                    action = "Transferred";
+                } else {
+                    action = "Transfusion";
+                }
                 const amount = ethers.utils.formatEther(txn[3]);
                 const timestamp = new Date(txn[0] * 1000).toLocaleDateString();
-
+    
                 transactions.push({
                     action: action,
                     amount: amount,
                     timestamp: timestamp
                 });
             }
-
+    
             console.log("Transaction history:", transactions);
             setTransactionHistory(transactions);
             setLoadingTransactionHistory(false);
