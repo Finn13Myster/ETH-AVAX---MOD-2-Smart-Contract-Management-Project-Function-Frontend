@@ -7,7 +7,7 @@ contract Assessment {
     uint256 public interestRate; // Interest rate in percentage (e.g., 5 for 5%)
     uint256 public lastInterestCalculation;
     uint256 public interestInterval; // Interval for interest calculation (in seconds)
-
+    
     struct Transaction {
         uint256 timestamp;
         address from;
@@ -23,16 +23,29 @@ contract Assessment {
     event InterestAccrued(uint256 amount);
     event TransactionRecorded(uint256 indexed index, uint256 timestamp, address indexed from, address indexed to, uint256 amount, string actionPerformed); // Include actionPerformed in event
 
+    mapping(address => uint256) public accountBalances;
+
     constructor(uint256 initBalance, uint256 _interestRate, uint256 _interestInterval) payable {
         owner = payable(msg.sender);
         balance = initBalance;
         interestRate = _interestRate;
         interestInterval = _interestInterval;
         lastInterestCalculation = block.timestamp;
+        
+        accountBalances[msg.sender] = initBalance;
+    }
+
+    function transferETH(address recipient, uint256 amount) external payable {
+        require(accountBalances[msg.sender] >= amount, "Insufficient balance in ATM");
+        
+        accountBalances[msg.sender] -= amount;
+        accountBalances[recipient] += amount;
+
+        recordTransaction(msg.sender, recipient, amount, "Transfer");
     }
 
     function getBalance() public view returns (uint256) {
-        return balance;
+        return accountBalances[msg.sender];
     }
 
     function deposit(uint256 _amount) public payable {
@@ -40,6 +53,7 @@ contract Assessment {
 
         uint256 _previousBalance = balance;
         balance += _amount;
+        accountBalances[msg.sender] += _amount;
 
         emit Deposit(msg.sender, _amount);
         recordTransaction(address(0), msg.sender, _amount, "Deposit");
@@ -61,6 +75,7 @@ contract Assessment {
         }
 
         balance -= _withdrawAmount;
+        accountBalances[msg.sender] -= _withdrawAmount;
 
         emit Withdraw(msg.sender, _withdrawAmount);
         recordTransaction(msg.sender, address(0), _withdrawAmount, "Withdraw");
@@ -72,6 +87,7 @@ contract Assessment {
         uint256 timePassed = block.timestamp - lastInterestCalculation;
         uint256 interest = (balance * interestRate * timePassed) / (interestInterval * 100);
         balance += interest;
+        accountBalances[owner] += interest;
         lastInterestCalculation = block.timestamp;
 
         emit InterestAccrued(interest);
