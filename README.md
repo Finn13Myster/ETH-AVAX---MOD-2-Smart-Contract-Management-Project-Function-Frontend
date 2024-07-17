@@ -1,8 +1,35 @@
 # Smart Contract Management Project
+
 The program is built to implement a high degree of automation, together with security and regulatory compliance, through an ATM-based robust smart contract management subsystem. Utilizing blockchain technology, the system ensures that only permitted transactions are processed, maintaining all security aspects. Simultaneously, it automates transaction execution to avoid errors and speed impacts. It integrates both KYC and AML regulations directly into the smart contracts, helping to automate compliance with standards at all transaction levels. The system also includes smart, self-executing contracts that automatically ensure regulatory compliance, thereby improving transaction security via ATMs.
 
 ## Description
+
 This project aims to provide a comprehensive solution for managing smart contracts with a focus on automation, security, and regulatory compliance. By leveraging blockchain technology, the system ensures that transactions are processed securely and efficiently. It integrates Know Your Customer (KYC) and Anti-Money Laundering (AML) regulations into the smart contracts, automating compliance processes. The project also features self-executing contracts that enhance security and compliance in ATM transactions. This solution is ideal for financial institutions seeking to streamline their operations while adhering to regulatory requirements.
+
+## Code Explanation
+
+### Frontend Code (`HomePage.js`)
+
+This React component interfaces with the Ethereum blockchain to manage and display information related to the Blood Bank DApp. Key functionalities include:
+
+- **MetaMask Integration:** The app checks if MetaMask is installed and connects to the user's account.
+- **ATM Contract Initialization:** Once connected, it initializes the ATM smart contract.
+- **Balance Management:** The component fetches and displays the user's balance and updates it after transactions.
+- **Transaction History:** It maintains and displays the history of transactions, including deposits, withdrawals, and transfers.
+- **Deposit and Withdraw:** Functions for depositing and withdrawing blood (ETH) are implemented, with corresponding transaction history updates.
+- **Transfer Functionality:** Allows the user to transfer blood (ETH) to another account, recording the transaction details.
+- **UI Elements:** Buttons and input fields for interacting with the contract and managing transactions.
+
+### Smart Contract (`Assessment.sol`)
+
+This Solidity contract implements the backend logic for the Blood Bank DApp. Key features include:
+
+- **Owner Management:** The contract owner can deposit and withdraw blood (ETH), and interest is accrued over time.
+- **Interest Calculation:** Interest on the deposited blood (ETH) is calculated and added periodically.
+- **Transaction Recording:** Each transaction (deposit, withdraw, transfer) is recorded with a timestamp and action performed.
+- **Balance Management:** User balances are maintained, with checks to ensure sufficient funds for transactions.
+- **Events:** Emits events for deposits, withdrawals, interest accruals, and transaction recordings, providing a log for frontend updates.
+- **Modifiers:** Includes a modifier to calculate and accrue interest automatically when certain functions are called.
 
 ## Getting Started
 
@@ -39,6 +66,7 @@ This project aims to provide a comprehensive solution for managing smart contrac
 After completing these steps, the project will be running locally at [http://localhost:3000/](http://localhost:3000/).
 
 ### Setting Up MetaMask
+
 To interact with the local Hardhat node, set up MetaMask as follows:
 
 1. **Open MetaMask in Your Browser Extension.**
@@ -63,6 +91,7 @@ To interact with the local Hardhat node, set up MetaMask as follows:
     - Click "Import."
 
 ### Executing the Program
+
 Once MetaMask is set up and connected:
 
 1. **Refresh the Website:** 
@@ -75,6 +104,7 @@ Once MetaMask is set up and connected:
     - Transaction history will update automatically after each successful transaction, showing details such as timestamp, action performed, and amount.
 
 ### Help: Fix Nonce Error
+
 If you encounter nonce errors in Solidity with MetaMask:
 
 1. **Open Your MetaMask Extension.**
@@ -86,7 +116,9 @@ If you encounter nonce errors in Solidity with MetaMask:
 4. **Scroll Down to Find and Click on "Clear Activity Tab Data."**
 
 ## Author
+
 - Franz Leeann U. Ferry [@LinkedIn](www.linkedin.com/in/franz-leeann-ferry-a286552a2)
-  
+
 ## License
+
 This project is licensed under the MIT License - see the `LICENSE.md` file for details
