@@ -8,7 +8,7 @@ This project aims to provide a comprehensive solution for managing smart contrac
 
 ## Code Explanation
 
-### Frontend Code (`HomePage.js`)
+### Frontend Code (`Index.js`)
 
 This React component interfaces with the Ethereum blockchain to manage and display information related to the Blood Bank DApp. Key functionalities include:
 
